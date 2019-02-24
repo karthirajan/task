@@ -15,15 +15,19 @@ public class YahooSearch {
 	    driver=new ChromeDriver();
 	    driver.get("https://in.yahoo.com/?p=us");
 	    driver.findElement(By.id("uh-search-box")).sendKeys("selenium",Keys.ENTER);
-	    goToPage("5");
+	    goToPage("3");
 	}
 
 	public static void goToPage(String name) {
 		List<WebElement> x = driver.findElements(By.xpath("//div[@class='compPagination']/strong//following::a"));
 	for (int i = 0; i < x.size(); i++) {
-			String name1 = x.get(i).getText();
+		 WebElement w = x.get(i);
+			String name1	=	w.getText();
+			
 			if (name1.equals(name)) {
-				 driver.findElement(By.xpath("//div[@class='compPagination']/a[3]")).click();
+				 WebElement w1 = w.findElement(By.xpath("//div[@class='compPagination']/a"));
+				 
+				 w1.click();
 					break;
 			}
 		
