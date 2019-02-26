@@ -1,10 +1,8 @@
-package ust.org.test;
+package org.sample;
 
 import java.util.List;
-import java.util.Set;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,23 +11,40 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Flipkart {
+
 	static WebDriver driver;
 
-	public static void main(String[] args) {
-		System.setProperty("webdriver.chrome.driver","C:\\Java\\eclipse-java-luna-SR2-win32-x86_64\\eclipse\\karthi1\\UST2\\driver\\chromedriver.exe");
-	    driver=new ChromeDriver();
-	    driver.get("https://www.flipkart.com/");
-	    driver.findElement(By.xpath("//button[@class='_2AkmmA _29YdH8']")).click();
-	   WebElement w1 = driver.findElement(By.xpath("//ul[@class='_114Zhd']/li[1]"));
-	   Actions acc=new Actions(driver);
-	   acc.moveToElement(w1).perform();
-	driver.findElement(By.xpath("//ul[@class='_2OZ78M _1fj2FQ'][1]/li/ul/li[4]")).click();
-
+	public static void main(String[] args) throws Throwable {
+		System.setProperty("webdriver.chrome.driver", "/home/ravin/chromedriver");
+		driver = new ChromeDriver();
+		driver.get("https://www.flipkart.com/");
+		driver.findElement(By.xpath("//button[@class='_2AkmmA _29YdH8']")).click();
+		
+		mainMenu("1");
+		subMenu("3");
+		
+		
+	}
+	public static void mainMenu(String name) {
+		String locator="//div[@class='_3zdbog _3Ed3Ub']/ul//li[@class='Wbt_B2 _1YVU3_'][$]";
+		locator=locator.replace("$", name);
+		WebElement w = driver.findElement(By.xpath(locator));
+		Actions acc=new Actions(driver);
+		acc.moveToElement(w).perform();
 
 	}
-	
-	
+	public static void subMenu(String name) throws Throwable {
+		String locator="//div[@class='_3zdbog _3Ed3Ub']/ul//li[@class='Wbt_B2 _1YVU3_'][1]//ul[@class='QPOmNK']//li[@class='_1KCOnI _2BfSTw _1h5QLb _3ZgIXy']//following-sibling::li[@class='_1KCOnI _3ZgIXy']//following-sibling::li[$]/a";
+		
+	locator=locator.replace("$", name);
+	//WebDriverWait wait=new WebDriverWait(driver, 50);
+	WebElement w = driver.findElement(By.xpath(locator));
+	//wait.until(ExpectedConditions.elementToBeClickable(w));
+	Thread.sleep(5000);
+	Actions acc=new Actions(driver);
+	acc.moveToElement(w).perform();
+	acc.doubleClick(w).perform();
+	System.out.println("in");
 
+	}
 }
-
-
