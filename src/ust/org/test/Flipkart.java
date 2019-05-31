@@ -1,4 +1,4 @@
-package org.sample;
+package ust.org.test;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class Flipkart {
 		driver.findElement(By.xpath("//button[@class='_2AkmmA _29YdH8']")).click();
 		
 		mainMenu("1");
-		subMenu("3");
+		
 		
 		
 	}
@@ -32,19 +32,8 @@ public class Flipkart {
 		Actions acc=new Actions(driver);
 		acc.moveToElement(w).perform();
 
-	}
-	public static void subMenu(String name) throws Throwable {
-		String locator="//div[@class='_3zdbog _3Ed3Ub']/ul//li[@class='Wbt_B2 _1YVU3_'][1]//ul[@class='QPOmNK']//li[@class='_1KCOnI _2BfSTw _1h5QLb _3ZgIXy']//following-sibling::li[@class='_1KCOnI _3ZgIXy']//following-sibling::li[$]/a";
-		
-	locator=locator.replace("$", name);
-	//WebDriverWait wait=new WebDriverWait(driver, 50);
-	WebElement w = driver.findElement(By.xpath(locator));
-	//wait.until(ExpectedConditions.elementToBeClickable(w));
-	Thread.sleep(5000);
-	Actions acc=new Actions(driver);
-	acc.moveToElement(w).perform();
-	acc.doubleClick(w).perform();
-	System.out.println("in");
+	
+
 
 	}
 }
