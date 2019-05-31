@@ -18,5 +18,14 @@ public class Bobcat {
 			System.out.println(x+"\n"+x.getText());
 			
 		}
+		
+		getdata("");
+		
+		
 }
+	
+	private static void getdata(String name) {
+		// TODO Auto-generated method stub
+
+	}
 }
